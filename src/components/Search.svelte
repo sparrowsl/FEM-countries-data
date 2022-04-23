@@ -7,6 +7,7 @@
 <style>
   .search{
     position: relative;
+    margin: 2em;
     /* border: 1px solid; */
   }
   [type="search"]{

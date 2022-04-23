@@ -16,8 +16,5 @@
 		max-width: 1240px;
 	}
 
-	@media (min-width: 640px) {
-		main {
-		}
-	}
+	@media (min-width: 768px) {}
 </style>
