@@ -5,7 +5,7 @@
   export let country;
 </script>
 
-<div transition:fly={{ y: 200, duration: 2000 }}>
+<div transition:fly={{ y: 200, duration: 2000 }} class:dark-card={$isDarkMode}>
   <figure>
     <img src={country.flags.svg} alt="{country.name}'s Flag" loading="lazy" />
     <caption class="country-detail" class:dark-mode={$isDarkMode}>
@@ -26,7 +26,7 @@
   }
   div {
     box-shadow: 2px 2px 4px silver;
-    border-radius: 5px;
+    border-radius: 7px;
     overflow: hidden;
   }
   caption,
@@ -53,5 +53,8 @@
   }
   .dark-mode{
     background-color: var(--dark-blue);
+  }
+  .dark-card{
+    box-shadow: 2px 2px 4px hsl(208.6, 27.3%, 15.1%);
   }
 </style>

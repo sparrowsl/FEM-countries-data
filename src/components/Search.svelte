@@ -1,14 +1,15 @@
-<script></script>
+<script>
+  import {isDarkMode} from "../stores/stores.js"
+</script>
 
-<div class="search">
+<div class="search" class:dark-mode={$isDarkMode}>
   <input type="search" placeholder="Search for a country...">
 </div>
 
 <style>
   .search{
     position: relative;
-    margin: 2em;
-    /* border: 1px solid; */
+    margin-block: 2em;
   }
   [type="search"]{
     background-image: url("../images/search-line.svg") no-repeat left;
@@ -23,5 +24,10 @@
     font-family: "Nunito Sans", sans-serif;
     color: var(--dark-gray);
     box-shadow: 2px 2px 5px rgb(230, 230, 230);
+  }
+  .dark-mode [type="search"]{
+    background-color: var(--dark-blue);
+    color: var(--white);
+    box-shadow: 2px 2px 4px hsl(208.6, 27.3%, 15.1%);
   }
 </style>

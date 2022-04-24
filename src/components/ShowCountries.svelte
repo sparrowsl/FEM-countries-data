@@ -1,4 +1,5 @@
 <script>
+  import { countries } from "../stores/stores.js";
   import Search from "./Search.svelte";
   import Filter from "./Filter.svelte";
   import CountryCard from "./CountryCard.svelte";
@@ -16,13 +17,15 @@
     }
   }
 
-  let data = getCountries();
-
+  // let data = getCountries();
+  let data = $countries;
 </script>
 
 <section>
-  <Search />
-  <Filter />
+  <div class="options">
+    <Search />
+    <Filter />
+  </div>
 
   <section class="countries">
     {#await data}
@@ -41,8 +44,12 @@
 </section>
 
 <style>
+  .options,
   .countries {
-    padding: 2em;
+    padding-inline: 2em;
+  }
+  .countries {
+    padding-block: 2em;
     display: grid;
     gap: 3em;
   }
@@ -75,6 +82,33 @@
     }
     to {
       transform: rotate(360deg);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .options,
+    .countries {
+      padding-inline: 5em;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .countries {
+      padding-inline: 5em;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .options,
+    .countries {
+      max-width: 1240px;
+      margin-inline: auto;
+    }
+    .countries {
+      gap: 5em;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>

@@ -13,8 +13,7 @@
 	main {
 		min-height: 100vh;
 		margin-inline: auto;
-		max-width: 1240px;
 	}
-
-	@media (min-width: 768px) {}
+	@media screen and (min-width: 768px) {
+	}
 </style>
