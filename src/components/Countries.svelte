@@ -1,50 +1,23 @@
 <script>
-  import { countries, filteredCountries } from "../stores/stores.js";
-  import Search from "./Search.svelte";
-  import Filter from "./Filter.svelte";
-  import CountryCard from "./CountryCard.svelte";
+  import { loadLocal } from "../stores/localStorage.js";
+  import { countries, filtered } from "../stores/countries.js";
+  import Country from "./Country.svelte";
 
-  const restCountriesURL = "https://restcountries.com/v3.1/all";
+  // get the countries from the localStorage
+  $countries = loadLocal("countries", []);
 
-  async function getCountries() {
-    const response = await fetch(restCountriesURL);
-    const result = await response.json();
-
-    if (response.ok) {
-      return result;
-    } else {
-      console.log(result)
-      throw new Error(result);
-    }
+  if ($filtered !== true) {
+    $filtered = $countries
+    // console.log($filtered)
   }
-
-  let data = JSON.parse(localStorage.getItem("countries"));
-
-  console.log(data);
 </script>
 
-<section>
-  <div class="options">
-    <Search />
-    <Filter />
-  </div>
-
-  <section class="countries">
-    {#await data}
-      <div class="waiting-loader">
-        <span class="loader" />
-        <p class="loading-info">loading countries...</p>
-      </div>
-    {:then countries}
-      {#each countries as country}
-        <CountryCard {country} />
-      {:else}
-      <p class="loading-info" style="text-align: center;">No countries found...</p>
-      {/each}
-    {:catch error}
-      <p>There was an {error.message} error, please refresh the page.</p>
-    {/await}
-  </section>
+<section class="countries">
+  {#each $filtered as country}
+    <Country {country} />
+    {:else}
+    <p>Loading countries....</p>
+  {/each}
 </section>
 
 <style>
@@ -57,6 +30,7 @@
     display: grid;
     gap: 3em;
   }
+
   /* an animated circle to spin while data is loading */
   div.waiting-loader {
     display: grid;
@@ -101,7 +75,7 @@
     }
     .countries {
       padding-inline: 5em;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
   }
   @media screen and (min-width: 992px) {
@@ -112,7 +86,7 @@
     }
     .countries {
       gap: 5em;
-      grid-template-columns: repeat(4, 1fr);
+      /* grid-template-columns: repeat(4, 1fr); */
     }
   }
 </style>

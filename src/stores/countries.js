@@ -1,11 +1,11 @@
 import { writable, readable } from "svelte/store";
 
 
-export let isDarkMode = writable(true)
+export let isDarkMode = writable(false);
 
-export const regions = readable(["All", "Africa", "America", "Asia", "Europe", "Oceania"])
+export const regions = readable(["All", "Africa", "Americas", "Asia", "Europe", "Oceania"]);
 
-export let filteredCountries = writable([])
+export let filtered = writable([])
 
 export let countries = writable([
   {
@@ -40,7 +40,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Africa",
     capital: "Capital",
@@ -50,7 +50,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Europe",
     capital: "Capital",
@@ -60,7 +60,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Europe",
     capital: "Capital",
@@ -70,7 +70,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Africa",
     capital: "Capital",
@@ -80,7 +80,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Africa",
     capital: "Capital",
@@ -90,7 +90,7 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },  {
+  }, {
     population: 3473727,
     region: "Africa",
     capital: "Capital",
@@ -100,4 +100,5 @@ export let countries = writable([
     flags: {
       svg: "https://flagcdn.com/uy.svg"
     }
-  },])
+  },
+]);

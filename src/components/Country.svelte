@@ -1,14 +1,15 @@
 <script>
   import { fly } from "svelte/transition";
-  import { isDarkMode } from "../stores/stores.js"
+  import { isDarkMode } from "../stores/countries.js";
+  import Image from "../components/shared/Image.svelte";
 
   export let country;
 </script>
 
-<div transition:fly={{ y: 200, duration: 2000 }} class:dark-card={$isDarkMode}>
+<div transition:fly={{ y: 200, duration: 500 }} class:dark-card={$isDarkMode}>
   <figure>
-    <img src={country.flags.svg} alt="{country.name}'s Flag" loading="lazy" />
-    <caption class="country-detail" class:dark-mode={$isDarkMode}>
+    <Image src={country.flags.svg} alt="{country.name}'s Flag" loading="lazy" />
+    <figcaption class="country-detail" class:dark-mode={$isDarkMode}>
       <h2>{country.name.common}</h2>
       <p>
         <span>Population:</span>
@@ -16,45 +17,40 @@
       </p>
       <p><span>Region:</span> {country.region}</p>
       <p><span>Capital:</span> {country.capital}</p>
-    </caption>
+    </figcaption>
   </figure>
 </div>
 
 <style>
-  img {
-    max-width: 100%;
-  }
   div {
     box-shadow: 2px 2px 4px silver;
     border-radius: 7px;
     overflow: hidden;
   }
-  caption,
   figure {
-    display: block;
-    text-align: left;
     font-family: "Nunito Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
   }
   h2 {
     padding-bottom: 1.25em;
     font-size: 1.7rem;
   }
-  caption {
-    padding: 2em;
-    padding-top: 1em;
+  figcaption {
+    padding: 1em 2em 2em;
   }
-  caption p {
+  figcaption p {
     font-size: 1.35rem;
     line-height: 1.75;
   }
-  caption span {
+  figcaption span {
     font-weight: 700;
     margin-right: 0.25em;
   }
-  .dark-mode{
+  .dark-mode {
     background-color: var(--dark-blue);
   }
-  .dark-card{
+  .dark-card {
     box-shadow: 2px 2px 4px hsl(208.6, 27.3%, 15.1%);
   }
 </style>

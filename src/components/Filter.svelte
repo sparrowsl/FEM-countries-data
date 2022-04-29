@@ -1,17 +1,17 @@
 <script>
-  import { regions, isDarkMode, filteredCountries, countries } from "../stores/stores.js";
+  import { regions, countries, filtered } from "../stores/countries.js";
 
-  function filterCountry(e){
-    // console.log("target",e.target.value.toLowerCase())
+  let value;
 
-    const filtered = $countries.filter((country) => country.region === e.target.value)
-
-    console.log(filtered)
+  $: if (value === "All") {
+    $filtered = $countries;
+  } else if (value) {
+    $filtered = $countries.filter((country) => country.region === value);
   }
 </script>
 
-<div class="filter" class:dark-mode={$isDarkMode}>
-  <select name="" id="" on:change={filterCountry}>
+<div class="filter">
+  <select name="" id="" bind:value>
     <option value="" disabled selected hidden>Filter by Region</option>
     {#each $regions as region}
       <option value={region}>{region}</option>
@@ -31,7 +31,7 @@
     background-color: var(--white);
     box-shadow: 2px 2px 5px rgb(230, 230, 230);
   }
-  .dark-mode select{
+  .dark-mode select {
     background-color: var(--dark-blue);
     color: var(--white);
     box-shadow: 2px 2px 4px hsl(208.6, 27.3%, 15.1%);

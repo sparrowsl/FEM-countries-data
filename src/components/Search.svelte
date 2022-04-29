@@ -1,5 +1,5 @@
 <script>
-  import {isDarkMode} from "../stores/stores.js"
+  import {isDarkMode} from "../stores/countries.js"
 </script>
 
 <div class="search" class:dark-mode={$isDarkMode}>
