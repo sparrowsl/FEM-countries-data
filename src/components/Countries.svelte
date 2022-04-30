@@ -4,11 +4,10 @@
   import Country from "./Country.svelte";
 
   // get the countries from the localStorage
-  $countries = loadLocal("countries", []);
+  // $countries = loadLocal("countries", []);
 
   if ($filtered !== true) {
     $filtered = $countries;
-    // console.log($filtered)
   }
 </script>
 
