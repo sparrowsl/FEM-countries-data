@@ -7,7 +7,7 @@
   $countries = loadLocal("countries", []);
 
   if ($filtered !== true) {
-    $filtered = $countries
+    $filtered = $countries;
     // console.log($filtered)
   }
 </script>
@@ -15,7 +15,7 @@
 <section class="countries">
   {#each $filtered as country}
     <Country {country} />
-    {:else}
+  {:else}
     <p>Loading countries....</p>
   {/each}
 </section>
