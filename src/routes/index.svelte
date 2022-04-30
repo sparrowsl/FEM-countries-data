@@ -1,15 +1,15 @@
-<!-- <script context="module">
+<script context="module">
   const restCountriesURL = "https://restcountries.com/v3.1/all";
 
   export const load = async ({ fetch }) => {
     try {
       const response = await fetch(restCountriesURL);
-      const countries = await response.json();
+      const data = await response.json();
 
       if (response.ok) {
         return {
           props: {
-            countries,
+            data,
           },
         };
       }
@@ -17,17 +17,17 @@
       console.error(`Error in load/: ${error}`);
     }
   };
-</script> -->
+</script>
 
 <script>
   import "../global.css";
   import Countries from "../components/Countries.svelte";
   import Search from "../components/Search.svelte";
   import Filter from "../components/Filter.svelte";
-  import {saveLocal} from "../stores/localStorage.js"
+  import { countries } from "../stores/countries.js";
 
-  // export let countries
-// saveLocal("countries", countries)
+  export let data;
+  $countries = data;
 </script>
 
 <svelte:head>
@@ -38,7 +38,7 @@
 <section>
   <div class="options">
     <Search />
-    <Filter/>
+    <Filter />
   </div>
 
   <Countries />
@@ -46,8 +46,17 @@
 
 <style>
   .options {
+    padding: 0 2em;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
+  }
+  @media screen and (min-width: 768px) {
+    .options {
+      padding: 0;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
   }
 </style>
