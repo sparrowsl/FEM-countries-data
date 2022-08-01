@@ -10,7 +10,17 @@
   <figure>
     <Image src={country.flags.svg} alt="{country.name}'s Flag" loading="lazy" />
     <figcaption class="country-detail" class:dark-mode={$isDarkMode}>
-      <h2>{country.name.common}</h2>
+      <h2>
+        <!-- Had to use this trick, the API has an issue for nigeria link
+          It redirects to Niger instead -->
+        {#if country.name.common.toLowerCase() === "nigeria"}
+          <a href="/country/nige">{country.name.common}</a>
+        {:else}
+          <a href="/country/{country.name.common.toLowerCase()}">
+            {country.name.common}
+          </a>
+        {/if}
+      </h2>
       <p>
         <span>Population:</span>
         {country.population.toLocaleString("en-US")}
