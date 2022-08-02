@@ -17,7 +17,9 @@ module.exports = {
         /* (Dark Mode Text & Light Mode Elements) */
         fem_white: "hsl(0, 0%, 100%)",
       },
-      fontFamily: {},
+      fontFamily: {
+        nunito: ["Nunito Sans", "sans-serif"],
+      },
     },
   },
   plugins: [],
