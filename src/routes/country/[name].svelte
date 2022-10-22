@@ -1,24 +1,3 @@
-<script context="module">
-	const restCountriesURL = 'https://restcountries.com/v3.1/name';
-
-	export async function load({ fetch, params }) {
-		try {
-			const response = await fetch(`${restCountriesURL}/${params.name}`);
-			const country = await response.json();
-
-			if (response.ok) {
-				return {
-					props: {
-						country: country[0]
-					}
-				};
-			}
-		} catch (error) {
-			console.error(`Error in single country/: ${error}`);
-		}
-	}
-</script>
-
 <script>
 	// import { getBordersOf } from '../../lib/stores/countries.js';
 
