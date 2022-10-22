@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="https://fav.farm/🌎" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
-      rel="stylesheet"
-    />
-    %svelte.head%
-  </head>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+			rel="stylesheet"
+		/>
+		%sveltekit.head%
+	</head>
 
-  <body class="bg-very_light_gray">
-    <div>%svelte.body%</div>
-  </body>
+	<body class="bg-very_light_gray font-nunito">
+		<div>%sveltekit.body%</div>
+	</body>
 </html>
