@@ -16,7 +16,7 @@
 	<select name="" id="" bind:value={selectedRegion} class="px-4 py-2">
 		<option value="" disabled selected hidden>Filter by Region</option>
 		{#each regions as region}
-			<option value={region}>{region}</option>
+			<option value={region} class="text-sm md:text-base">{region}</option>
 		{/each}
 	</select>
 </div>

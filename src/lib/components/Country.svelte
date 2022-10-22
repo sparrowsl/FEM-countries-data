@@ -4,14 +4,14 @@
 	export let country;
 </script>
 
-<figure class="relative rounded-md bg-white shadow-md">
+<figure class="relative rounded-md bg-white shadow-md dark:bg-dark_blue dark:text-white">
 	<!-- Country flag -->
-	<Image src={country.flags.svg} alt="{country.name}'s Flag" classes="w-full" />
+	<Image src={country.flags.svg} alt="{country.name}'s Flag" classes="aspect-video w-full" />
 
 	<!-- Country details -->
 	<figcaption class="p-5">
-		<h2 class="mb-3 text-lg font-bold md:text-2xl">
-			<!-- Had to use this trick, the API has a bug for nigeria link.
+		<h2 class="mb-3 text-lg font-bold text-very_dark_blue_text md:text-2xl">
+			<!-- Using this conditional statement because the API has a bug for the "nigeria" link.
           It redirects to Niger instead -->
 			{#if country.name.common.toLowerCase() === 'nigeria'}
 				<a href="/country/nige">{country.name.common}</a>
