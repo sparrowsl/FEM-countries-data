@@ -10,7 +10,7 @@
 
 	<!-- Country details -->
 	<figcaption class="p-5">
-		<h2 class="mb-3 text-lg font-bold text-very_dark_blue_text md:text-2xl">
+		<h2 class="mb-3 text-lg font-bold text-very_dark_blue_text md:text-xl">
 			<!-- Using this conditional statement because the API has a bug for the "nigeria" link.
           It redirects to Niger instead -->
 			{#if country.name.common.toLowerCase() === 'nigeria'}
